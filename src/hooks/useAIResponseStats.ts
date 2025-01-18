@@ -1,4 +1,4 @@
-import { getAIResponseStats } from "@/lib/stats";
+import axios from "axios";
 import { AIResponseStatsModel } from "@/models/AIResponseStatsModel";
 import { useCallback, useEffect, useState } from "react";
 
@@ -8,8 +8,8 @@ export default function useAIResponseStats() {
 
   const fetchData = useCallback(async () => {
     setLoading(true);
-    const data = await getAIResponseStats();
-    setData(data);
+    const data = await axios.get<AIResponseStatsModel>("/api/ai/response-stats");
+    setData(data.data);
     setLoading(false);
   }, []);
 

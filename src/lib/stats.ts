@@ -16,9 +16,13 @@ export async function getMostUsedPrompts({ token }: { token: string }) {
   }
 }
 
-export async function getAIResponseStats() {
+export async function getAIResponseStats({ token }: { token: string }) {
   try {
-    const res = await axiosAIServiceInstance.get<AIResponseStatsModel>("/ai/responses/stats");
+    const res = await axiosAIServiceInstance.get<AIResponseStatsModel>("/ai/stats/quality", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return res.data;
   } catch (e) {
     console.log("Error getting AI response stats", e);

@@ -1,4 +1,6 @@
-export interface LoginResponseModel {
+import { BaseResponseModel } from "./BaseResponseModel";
+
+export interface LoginResponseModel extends BaseResponseModel {
   user?: User;
   token?: string;
 }

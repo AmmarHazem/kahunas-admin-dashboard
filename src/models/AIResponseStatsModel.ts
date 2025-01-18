@@ -1,4 +1,6 @@
-export interface AIResponseStatsModel {
+import { BaseResponseModel } from "./BaseResponseModel";
+
+export interface AIResponseStatsModel extends BaseResponseModel {
   stats?: StatsModel;
 }
 

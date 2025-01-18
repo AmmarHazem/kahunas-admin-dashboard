@@ -1,4 +1,6 @@
-export interface MostUsedPromptsResponseModel {
+import { BaseResponseModel } from "./BaseResponseModel";
+
+export interface MostUsedPromptsResponseModel extends BaseResponseModel {
   prompts?: MostUsedPromptModel[];
 }
 

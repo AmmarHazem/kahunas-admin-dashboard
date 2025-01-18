@@ -1,6 +1,8 @@
 "use client";
 import { FormEvent, useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
+import axios, { AxiosError } from "axios";
+import Link from "next/link";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -15,20 +17,19 @@ export default function LoginPage() {
       setError("");
       setLoading(true);
       try {
-        const res = await fetch("/api/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
-        });
-        if (!res.ok) {
-          throw new Error("Invalid credentials");
+        const res = await axios.post<{ success?: boolean }>("/api/login", { email, password });
+        if (res.data.success) {
+          router.replace("/");
+        } else {
+          throw new Error("Invalid email or password");
         }
-        router.replace("/");
       } catch (error) {
-        setError("Invalid email or password");
         console.error("Login failed:", error);
+        if (error instanceof AxiosError) {
+          setError(error.response?.data?.error || "Invalid email or password");
+        } else {
+          setError("Invalid email or password");
+        }
         setLoading(false);
       }
     },
@@ -85,6 +86,12 @@ export default function LoginPage() {
             </button>
           </div>
         </form>
+        <p className="text-center text-sm text-gray-500">
+          Don&apos;t have an account?{" "}
+          <Link className="text-blue-500 hover:text-blue-600" href="/register">
+            Sign up
+          </Link>
+        </p>
       </div>
     </div>
   );

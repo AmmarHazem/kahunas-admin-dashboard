@@ -1,5 +1,6 @@
 "use client";
 import LogoutButton from "@/components/LogoutButton";
+import MostUsedPromptsTable from "@/components/MostUsedPromptsTable";
 import { useState } from "react";
 
 export default function Home() {
@@ -47,29 +48,7 @@ export default function Home() {
             <p className="mt-2 text-3xl font-semibold text-orange-600">{analyticsData.metrics.totalResponses}</p>
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-          <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-lg font-medium text-gray-900">Most Used Prompts</h2>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Prompt</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Usage Count</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {analyticsData.topPrompts.map((item, index) => (
-                  <tr key={index}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.prompt}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.count}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <MostUsedPromptsTable />
       </div>
     </main>
   );

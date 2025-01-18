@@ -1,11 +1,11 @@
 import { BaseResponseModel } from "./BaseResponseModel";
 
 export interface LoginResponseModel extends BaseResponseModel {
-  user?: User;
+  user?: UserModel;
   token?: string;
 }
 
-export interface User {
+export interface UserModel {
   id?: string;
   email?: string;
   firstName?: string;

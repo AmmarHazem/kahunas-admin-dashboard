@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
+import SWRProvider from "@/components/SWRProvider";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -19,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} antialiased`}>{children}</body>
+      <SWRProvider>
+        <body className={`${roboto.className} antialiased`}>{children}</body>
+      </SWRProvider>
     </html>
   );
 }

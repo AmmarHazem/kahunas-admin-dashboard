@@ -12,6 +12,16 @@ A Next.js-based admin dashboard application for managing clients and viewing ana
   - AI Response Statistics
   - Most Used Prompts Analysis
 
+## Live Demo
+
+The application is hosted on AWS EC2 and can be accessed at:
+[http://13.233.45.0/login](http://13.233.45.0/login)
+
+## Infrastructure
+
+- **Hosting**: AWS EC2 instance
+- **Monitoring**: AWS CloudWatch for performance metrics and logs
+
 ## Prerequisites
 
 - Node.js (Latest LTS version recommended)

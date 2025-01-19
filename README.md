@@ -87,11 +87,3 @@ src/
 ├── lib/                   # Utility functions and configurations
 └── config/               # Application configuration
 ```
-
-## Contributing
-
-[Add contribution guidelines here]
-
-## License
-
-[Add license information here]
